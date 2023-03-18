@@ -2,3 +2,5 @@
 include/
 .config.old
 .vscode/
+_build/
+/dist/
