@@ -18,11 +18,16 @@ class X8664CtngLinuxMusl < Formula
       sha256 "7dcc448a12b41423be5d0ed1a2f1eea4c1f2b1fd0c9d6ac50f7ba18fb1535d19"
     end
   end
-  
+  resource "init" do
+    url "https://raw.githubusercontent.com/novice79/homebrew-gcc-cross/master/init.sh"
+    sha256 "a6d02f32ca044089b4630b02e935247a9627caf122ca8dc701b97391569e2815"
+  end
 
   def install
     (prefix).install Dir["./*"]
+    resource("init").stage { prefix.install "init.sh" }
     cd prefix do
+      system "chmod", "+x", "./init.sh"
       system "./init.sh"
     end
   end

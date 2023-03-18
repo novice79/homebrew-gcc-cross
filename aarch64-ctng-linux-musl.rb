@@ -18,11 +18,16 @@ class Aarch64CtngLinuxMusl < Formula
       sha256 "7da7935155263f9504aec60f41e1371224758528b34fcf896db0787ec476b9a5"
     end
   end
-  
+  resource "init" do
+    url "https://raw.githubusercontent.com/novice79/homebrew-gcc-cross/master/init.sh"
+    sha256 "a6d02f32ca044089b4630b02e935247a9627caf122ca8dc701b97391569e2815"
+  end
 
   def install
-    (prefix).install Dir["./*"]
+    prefix.install Dir["./*"]
+    resource("init").stage { prefix.install "init.sh" }
     cd prefix do
+      system "chmod", "+x", "./init.sh"
       system "./init.sh"
     end
   end

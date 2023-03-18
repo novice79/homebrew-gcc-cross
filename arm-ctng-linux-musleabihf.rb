@@ -18,11 +18,16 @@ class ArmCtngLinuxMusleabihf < Formula
       sha256 "7e99c77da88e25cfc2005d5fcb2366c6ea3831a34b56c1fc6e2f13481296d245"
     end
   end
-  
+  resource "init" do
+    url "https://raw.githubusercontent.com/novice79/homebrew-gcc-cross/master/init.sh"
+    sha256 "a6d02f32ca044089b4630b02e935247a9627caf122ca8dc701b97391569e2815"
+  end
 
   def install
     (prefix).install Dir["./*"]
+    resource("init").stage { prefix.install "init.sh" }
     cd prefix do
+      system "chmod", "+x", "./init.sh"
       system "./init.sh"
     end
   end

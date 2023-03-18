@@ -25,8 +25,8 @@ brew install aarch64-ctng-linux-musl
 
 # Usage
 
-    armv7-ctng-linux-musleabihf-cc main.c 
-    armv7-ctng-linux-musleabihf-c++ main.cpp
+    armv7-ctng-linux-musleabihf-cc -static main.c -o main
+    armv7-ctng-linux-musleabihf-c++ -static main.cpp -o main
     ...
 
 Cmake/Meson build examples to be conninued...
