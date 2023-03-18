@@ -29,4 +29,6 @@ brew install aarch64-ctng-linux-musl
     armv7-ctng-linux-musleabihf-c++ -static main.cpp -o main
     ...
 
-Cmake/Meson build examples to be conninued...
+Cmake/Meson cross build example in *test/* folder  
+[cmake-build-test.sh](cmake-build-test.sh)   
+[meson-build-test.sh](meson-build-test.sh)   
