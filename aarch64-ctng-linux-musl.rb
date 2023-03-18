@@ -24,11 +24,16 @@ class Aarch64CtngLinuxMusl < Formula
   end
 
   def install
-    prefix.install Dir["./*"]
-    resource("init").stage { prefix.install "init.sh" }
-    cd prefix do
-      system "chmod", "+x", "./init.sh"
+    tc = (prefix/"tc")
+    tc.install Dir["./*"]
+    resource("init").stage { tc.install "init.sh" }
+    cd tc do
+      # system "chmod", "+x", "./init.sh"
       system "./init.sh"
     end
+    Dir.glob(tc/"bin/*") {|file| bin.install_symlink file}
+    prefix.install_symlink tc/"toolchain.cmake"
+    prefix.install_symlink tc/"meson_cross.txt"
+    prefix.install_symlink tc/"env.sh"
   end
 end
