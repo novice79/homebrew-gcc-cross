@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -e
 
 DIR=$( cd ${0%/*} && pwd -P )
 declare -a tools=(
