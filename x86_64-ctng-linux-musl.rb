@@ -1,24 +1,29 @@
-class X8664UnknownLinuxMusl < Formula
+class X8664CtngLinuxMusl < Formula
   desc "x86_64 Linux MUSL Toolchain"
-  homepage "https://github.com/messense/homebrew-macos-cross-toolchains"
-  license "GPL-3.0-or-later" => { with: "GCC-exception-3.1" }
-  version "11.3.0"
+  homepage "https://github.com/novice79/homebrew-gcc-cross"
+  version "1.0.0"
 
-  depends_on "bdw-gc"
-  depends_on "guile"
-  depends_on "zstd"
-  depends_on "python@3.11"
-
-  if Hardware::CPU.arm?
-    url "https://github.com/messense/homebrew-macos-cross-toolchains/releases/download/v11.2.0/x86_64-unknown-linux-musl-aarch64-darwin.tar.gz"
-    sha256 "588bd5976efc441ae29a1574c27dfe4b0862ad28d868e53aad5c36cdd67450dc"
-  else
-    url "https://github.com/messense/homebrew-macos-cross-toolchains/releases/download/v11.2.0/x86_64-unknown-linux-musl-x86_64-darwin.tar.gz"
-    sha256 "a3cd8f2d18effb6906a7a49dd3f0231440c090a90821916772d27daee8cda558"
+  depends_on "bash"
+  depends_on "xz"
+  on_linux do
+    # or if OS.mac? and OS.linux?
+    url "https://github.com/novice79/homebrew-gcc-cross/releases/download/v1.0.0/x86_64-ctng-linux-musl-x86_64-linux.tar.xz"
+    sha256 "7e835d705a0258c9ef04d234f6e9ce6eb56c019c503a5cee3cc1b33c5e224e41"
   end
+  on_macos do
+    if Hardware::CPU.arm?
+      odie "Not support arm macos yet"
+    else
+      url "https://github.com/novice79/homebrew-gcc-cross/releases/download/v1.0.0/x86_64-ctng-linux-musl-x86_64-macos.tar.xz"
+      sha256 "7dcc448a12b41423be5d0ed1a2f1eea4c1f2b1fd0c9d6ac50f7ba18fb1535d19"
+    end
+  end
+  
 
   def install
-    (prefix/"toolchain").install Dir["./*"]
-    Dir.glob(prefix/"toolchain/bin/*") {|file| bin.install_symlink file}
+    (prefix).install Dir["./*"]
+    cd prefix do
+      system "./init.sh"
+    end
   end
 end
