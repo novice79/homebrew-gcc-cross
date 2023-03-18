@@ -28,7 +28,7 @@ class Aarch64CtngLinuxMusl < Formula
     tc.install Dir["./*"]
     resource("init").stage { tc.install "init.sh" }
     cd tc do
-      # system "chmod", "+x", "./init.sh"
+      system "chmod", "+x", "./init.sh"
       system "./init.sh"
     end
     Dir.glob(tc/"bin/*") {|file| bin.install_symlink file}
