@@ -12,7 +12,8 @@ class Armv7CtngLinuxMusleabihf < Formula
   end
   on_macos do
     if Hardware::CPU.arm?
-      odie "Not support arm macos yet"
+      url "https://github.com/novice79/homebrew-gcc-cross/releases/download/v1.0.0/armv7-ctng-linux-musleabihf-arm64-macos.tar.xz"
+      sha256 "15fb7930049c255601a07f06c196c351ba191cf2a0ad061d09a9a25c6c9c8261"
     else
       url "https://github.com/novice79/homebrew-gcc-cross/releases/download/v1.0.0/armv7-ctng-linux-musleabihf-x86_64-macos.tar.xz"
       sha256 "b243f984d903c7214a89bd07935d92300ae8751efaeba0b7fe397fbc4a0019ab"

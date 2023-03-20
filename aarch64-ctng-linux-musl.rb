@@ -12,7 +12,9 @@ class Aarch64CtngLinuxMusl < Formula
   end
   on_macos do
     if Hardware::CPU.arm?
-      odie "Not support arm macos yet"
+      # odie "Not support arm macos yet"
+      url "https://github.com/novice79/homebrew-gcc-cross/releases/download/v1.0.0/aarch64-ctng-linux-musl-arm64-macos.tar.xz"
+      sha256 "212be698936f77befb7d1bbd9b17475f74e3533093a0399d31abe45c2ef92f12"
     else
       url "https://github.com/novice79/homebrew-gcc-cross/releases/download/v1.0.0/aarch64-ctng-linux-musl-x86_64-macos.tar.xz"
       sha256 "7da7935155263f9504aec60f41e1371224758528b34fcf896db0787ec476b9a5"

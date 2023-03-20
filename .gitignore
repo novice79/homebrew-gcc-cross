@@ -4,3 +4,5 @@ include/
 .vscode/
 _build/
 /dist/
+/local/
+build.log

@@ -12,7 +12,8 @@ class X8664CtngLinuxMusl < Formula
   end
   on_macos do
     if Hardware::CPU.arm?
-      odie "Not support arm macos yet"
+      url "https://github.com/novice79/homebrew-gcc-cross/releases/download/v1.0.0/x86_64-ctng-linux-musl-arm64-macos.tar.xz"
+      sha256 "810d2dd077059e11f03a69c25bf3ffc583bf68b91d9456750a8f1c970f918281"
     else
       url "https://github.com/novice79/homebrew-gcc-cross/releases/download/v1.0.0/x86_64-ctng-linux-musl-x86_64-macos.tar.xz"
       sha256 "7dcc448a12b41423be5d0ed1a2f1eea4c1f2b1fd0c9d6ac50f7ba18fb1535d19"

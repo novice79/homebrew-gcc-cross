@@ -8,8 +8,11 @@ declare -a tools=(
     aarch64-ctng-linux-musl 
     x86_64-ctng-linux-musl 
 )
+# sysctl -n hw.physicalcpu or $(sysctl -n hw.ncpu)
+# hash nproc 2>/dev/null || alias nproc="sysctl -n hw.logicalcpu"
+[[ $OSTYPE == 'darwin'* ]] && cores=$(sysctl -n hw.logicalcpu) || cores=`nproc`
 for i in "${tools[@]}"; do
     # echo $i
     cd "$DIR/$i"
-    ct-ng build -j $(($(nproc) - 1))
+    ct-ng build -j $(($cores - 1))
 done
