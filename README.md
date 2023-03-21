@@ -11,7 +11,9 @@ Remains:
 - x86_64-ctng-linux-musl
 
 
-# Install using Homebrew: macos(x86_64/arm64) or linux(x86_64)
+# Install using Homebrew 
+
+for macos(x86_64/arm64) or linux(x86_64)
 
 ```bash
 brew tap novice79/gcc-cross
