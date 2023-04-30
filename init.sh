@@ -7,7 +7,7 @@ t=(${target//-/ })
 # [[ -z $target ]] && exit 1
 BIN="$PWD/bin"
 cat > $PWD/toolchain.cmake <<-EOF
-set(CMAKE_SYSTEM_NAME ${t[2]})
+set(CMAKE_SYSTEM_NAME ${t[2]^})
 set(CMAKE_SYSTEM_PROCESSOR ${t[0]%v7})
 
 set(CMAKE_C_COMPILER \${CMAKE_CURRENT_LIST_DIR}/bin/${target}-gcc)
